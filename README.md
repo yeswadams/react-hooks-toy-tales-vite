@@ -1,44 +1,69 @@
-# Practice Challenge: Toy Tales
+# Toy Tales
 
-You've got a friend in need! Again!
+Toy Tales is a simple React application that allows users to manage a collection of toys. Users can view a list of toys, add new toys to the collection, "like" toys to increase their popularity, and "donate" toys to remove them from the collection.
 
-Andy has misplaced of his toys (again) and need your help to organize them.
+## Demo
 
-## Setup
+![Toy Tales Screenshot](./public/demo-screenshot.png)
 
-All the information about Andy's toys can be found in the `db.json` file. We'll
-be using `json-server` to create a RESTful API for our database.
+## Features
 
-Run `npm install` to install our dependencies.
+- **View Toys**: Fetches and displays a collection of toys from a local API.
+- **Add a Toy**: A controlled form to add a new toy with a name and image URL.
+- **Like a Toy**: Increase the number of likes for a specific toy via a PATCH request.
+- **Donate a Toy**: Remove a toy from the collection and the database via a DELETE request.
+- **Toggle Form**: Show or hide the toy creation form with a button click.
 
-Then, run `npm run server` to start up `json-server` on `http://localhost:3001`.
+## Technologies Used
 
-In another tab, run `npm run dev` to start up our React app at `http://localhost:3000`.
+- **React**: For building the user interface and managing state.
+- **Vite**: As the build tool and development server.
+- **JSON Server**: To provide a RESTful API using a `db.json` file.
+- **CSS**: Custom styling for a "Toy Story" inspired look and feel.
+- **Vitest & React Testing Library**: For unit testing components.
 
-In another tab, run `npm run test` to run the test suite.
+## Getting Started
 
-Before you start building out the application, the first step that you should
-take is to examint the current code and component hierarchy. This will tell you 
-how components can pass data to each other as well as where that information should 
-be stored.
+### Installation
 
-## Deliverables
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:yeswadams/react-hooks-toy-tales-vite.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd react-hooks-toy-tales-vite
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- _When our application loads_, make a GET request to `/toys` to fetch the toy
-  array. Given your component tree, think about which component should be
-  responsible for the array. After you have put the data in the proper
-  component, your next job is to render the `ToyCard` components on the page.
+### Running the Application
 
-- _When the `ToyForm` is submitted_, make a POST request to `/toys` to save a
-  new toy to the server. Using the ideas of controlled form and inverse data
-  flow, think about how to render a new `ToyCard` for the toy that you created.
+1. Start the JSON Server (API):
+   ```bash
+   npm run server
+   ```
+   The server will run at `http://localhost:3001`.
 
-- _When the `Donate to Goodwill` button is clicked_, make a DELETE request to
-  `/toys/:id` with the ID of the toy that was clicked to delete the toy from the
-  server. The `ToyCard` that you clicked on should also be removed from the DOM.
+2. In a new terminal tab, start the React development server:
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173` (or the port specified by Vite).
 
-- _When the like button is clicked_, make a PATCH request to `/toys/:id` with
-  the id of the toy that was clicked, along with the new number of likes (this
-  should be sent in the body of the PATCH request, as a object:
-  `{ likes: 10 }`), to update the toy on the server. Clicking on the button
-  should also increase the number of likes on the DOM.
+### Running Tests
+
+To run the test suite, use the following command:
+```bash
+npm run test
+```
+
+## Project Structure
+
+- `src/components/App.jsx`: Main application component managing state and layout.
+- `src/components/ToyForm.jsx`: Component for the new toy creation form.
+- `src/components/ToyContainer.jsx`: Wrapper for the list of toy cards.
+- `src/components/ToyCard.jsx`: Individual card displaying toy details and actions.
+- `db.json`: Local database file for JSON Server.
